@@ -2,12 +2,14 @@ package com.yordanm.spring_boot_advancedish.customer.repositories;
 
 
 import com.yordanm.spring_boot_advancedish.customer.models.Customer;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Component
-public class CustomerFakeRepository implements CustomerRepository{
+@Repository(value = "fake")
+public class CustomerFakeRepo implements CustomerRepo {
 
     @Override
     public List<Customer> getCustomers() {
