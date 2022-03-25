@@ -18,16 +18,22 @@ public class CustomerFakeRepo implements CustomerRepo {
                         .id(1)
                         .firstName("Mikey")
                         .lastName("Mouse")
+                        .email("mikey@emil.com")
+                        .password("password")
                         .build(),
                 Customer.builder()
                         .id(2)
                         .firstName("Joe")
                         .lastName("Doe")
+                        .email("joe@emil.com")
+                        .password("password")
                         .build(),
                 Customer.builder()
                         .id(3)
                         .firstName("James")
                         .lastName("Bond")
+                        .email("james@emil.com")
+                        .password("password")
                         .build()
         );
     }
