@@ -1,5 +1,6 @@
 package com.yordanm.spring_boot_advancedish.customer.services;
 
+import com.yordanm.spring_boot_advancedish.customer.exceptions.CustomerNotFoundException;
 import com.yordanm.spring_boot_advancedish.customer.models.Customer;
 import com.yordanm.spring_boot_advancedish.customer.models.CustomerDTO;
 import com.yordanm.spring_boot_advancedish.customer.repositories.CustomerRepo;
@@ -28,6 +29,8 @@ public class CustomerService {
                 .filter(customer -> customer.getId() == customerId)
                 .map(CustomerDTO::map)
                 .findFirst();
-        return responseCustomer.orElseThrow();
+        return responseCustomer.orElseThrow(
+                ()-> new CustomerNotFoundException(
+                        String.format("Customer with id %d not found.", customerId)));
     }
 }
