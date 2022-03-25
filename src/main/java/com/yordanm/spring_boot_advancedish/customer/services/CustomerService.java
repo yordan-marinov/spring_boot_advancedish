@@ -1,6 +1,7 @@
 package com.yordanm.spring_boot_advancedish.customer.services;
 
 import com.yordanm.spring_boot_advancedish.customer.models.Customer;
+import com.yordanm.spring_boot_advancedish.customer.models.CustomerDTO;
 import com.yordanm.spring_boot_advancedish.customer.repositories.CustomerRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -15,14 +16,17 @@ public class CustomerService {
 
     private final  CustomerRepo customerRepo;
 
-    public List<Customer> all() {
-        return customerRepo.getCustomers();
+    public List<CustomerDTO> all() {
+        return customerRepo.getCustomers().stream()
+                .map(CustomerDTO::map)
+                .toList();
     }
 
-    public Customer getCustomer(int customerId) {
-        final Optional<Customer> responseCustomer = all()
+    public CustomerDTO getCustomer(int customerId) {
+        final Optional<CustomerDTO> responseCustomer = customerRepo.getCustomers()
                 .stream()
                 .filter(customer -> customer.getId() == customerId)
+                .map(CustomerDTO::map)
                 .findFirst();
         return responseCustomer.orElseThrow();
     }
