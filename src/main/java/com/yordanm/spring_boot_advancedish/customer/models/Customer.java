@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 @Data
@@ -16,13 +17,16 @@ public class Customer {
 
     private int id;
 
-    @NotBlank
+    @NotBlank(message = "First name can not be empty")
     private String firstName;
 
-    @NotBlank
+    @NotBlank(message = "Last name can not be empty")
     private String lastName;
 
-    @NotBlank
+    @Email
+    private String email;
+
+    @NotBlank(message = "Password can not be empty")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 

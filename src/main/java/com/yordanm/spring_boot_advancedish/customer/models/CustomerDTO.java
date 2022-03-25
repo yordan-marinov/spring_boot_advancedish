@@ -8,16 +8,20 @@ import lombok.Data;
 @Builder
 public class CustomerDTO {
 
-    @JsonProperty(value = "customerFirstName")
+    @JsonProperty(value = "customer_first_name")
     private String firstName;
 
-    @JsonProperty(value = "customerLastName")
+    @JsonProperty(value = "customer_last_name")
     private String lastName;
+
+    @JsonProperty(value = "customer_email")
+    private String email;
 
     public static CustomerDTO map(Customer customer){
         return CustomerDTO.builder()
                 .firstName(customer.getFirstName())
                 .lastName(customer.getLastName())
+                .email(customer.getEmail())
                 .build();
     }
 }
