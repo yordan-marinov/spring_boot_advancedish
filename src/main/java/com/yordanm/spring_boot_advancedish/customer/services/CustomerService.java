@@ -12,7 +12,7 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class CustomerService {
-//    @Qualifier("fake")
+
     private final  CustomerRepo customerRepo;
 
     public List<Customer> all() {
