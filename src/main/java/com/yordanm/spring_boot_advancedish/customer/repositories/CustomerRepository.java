@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-@Primary
+//@Primary -> This annotation is  not needed any more because is configured trough CustomerConfig class
 public class CustomerRepository implements CustomerRepo {
 
     @Override
