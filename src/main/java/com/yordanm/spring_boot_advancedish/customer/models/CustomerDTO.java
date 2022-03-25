@@ -10,6 +10,7 @@ public class CustomerDTO {
 
     @JsonProperty(value = "customerFirstName")
     private String firstName;
+
     @JsonProperty(value = "customerLastName")
     private String lastName;
 

@@ -6,8 +6,10 @@ import com.yordanm.spring_boot_advancedish.customer.services.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
+@Deprecated
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/customers")
@@ -26,7 +28,7 @@ public class CustomerController {
     }
 
     @PostMapping
-    public Customer createCustomer(@RequestBody Customer customer){
+    public Customer createCustomer(@RequestBody @Valid Customer customer){
         System.out.println(customer);
         return customer;
     }
