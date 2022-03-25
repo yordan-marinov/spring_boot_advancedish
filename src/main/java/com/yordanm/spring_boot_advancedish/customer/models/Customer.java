@@ -17,16 +17,16 @@ public class Customer {
 
     private int id;
 
-    @NotBlank
+    @NotBlank(message = "First name can not be empty")
     private String firstName;
 
-    @NotBlank
+    @NotBlank(message = "Last name can not be empty")
     private String lastName;
 
     @Email
     private String email;
 
-    @NotBlank
+    @NotBlank(message = "Password can not be empty")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
