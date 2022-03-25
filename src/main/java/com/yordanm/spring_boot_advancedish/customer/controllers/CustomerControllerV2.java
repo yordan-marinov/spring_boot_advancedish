@@ -10,24 +10,30 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/customers")
-public class CustomerController {
+@RequestMapping("/api/v2/customers")
+public class CustomerControllerV2 {
 
     private final CustomerService customerService;
 
     @GetMapping(path = "/{customerId}")
     public CustomerDTO returnCustomer(@PathVariable int customerId){
+        System.out.println("This is the version 2");
+
         return customerService.getCustomer(customerId);
     }
 
     @GetMapping
     public List<CustomerDTO> getAll(){
+        System.out.println("This is the version 2");
+
         return customerService.all();
     }
 
     @PostMapping
     public Customer createCustomer(@RequestBody Customer customer){
         System.out.println(customer);
+        System.out.println("This is the version 2");
+
         return customer;
     }
 
@@ -35,6 +41,8 @@ public class CustomerController {
     public CustomerDTO deleteCustomer(@PathVariable Integer customerId){
         CustomerDTO customer = customerService.getCustomer(customerId);
         System.out.println(customer);
+        System.out.println("This is the version 2");
+
         return customer;
     }
 }
