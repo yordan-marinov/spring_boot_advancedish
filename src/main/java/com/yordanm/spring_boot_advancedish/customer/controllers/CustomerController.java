@@ -4,10 +4,7 @@ import com.yordanm.spring_boot_advancedish.customer.models.Customer;
 import com.yordanm.spring_boot_advancedish.customer.models.CustomerDTO;
 import com.yordanm.spring_boot_advancedish.customer.services.CustomerService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,5 +23,18 @@ public class CustomerController {
     @GetMapping
     public List<CustomerDTO> getAll(){
         return customerService.all();
+    }
+
+    @PostMapping
+    public Customer createCustomer(@RequestBody Customer customer){
+        System.out.println(customer);
+        return customer;
+    }
+
+    @DeleteMapping(path = "{customerId}")
+    public CustomerDTO deleteCustomer(@PathVariable Integer customerId){
+        CustomerDTO customer = customerService.getCustomer(customerId);
+        System.out.println(customer);
+        return customer;
     }
 }
