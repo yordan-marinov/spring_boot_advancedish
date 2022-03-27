@@ -18,8 +18,6 @@ public class CustomerConfig {
     @Bean
     CustomerRepo customerRepo(){
         log.info("Customer Fake Repo is: {}", useFakeCustomerRepo);
-        return useFakeCustomerRepo ?
-                new CustomerFakeRepo() :
-                new CustomerRepository();
+        return new CustomerFakeRepo();
     }
 }
