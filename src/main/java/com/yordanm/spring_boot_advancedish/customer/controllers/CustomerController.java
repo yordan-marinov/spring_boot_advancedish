@@ -19,12 +19,12 @@ public class CustomerController {
 
     @GetMapping(path = "/{customerId}")
     public CustomerDTO returnCustomer(@PathVariable int customerId){
-        return customerService.getCustomer(customerId);
+        return customerService.getCustomerFakeRepo(customerId);
     }
 
     @GetMapping
     public List<CustomerDTO> getAll(){
-        return customerService.all();
+        return customerService.allV1();
     }
 
     @PostMapping
@@ -35,7 +35,7 @@ public class CustomerController {
 
     @DeleteMapping(path = "{customerId}")
     public CustomerDTO deleteCustomer(@PathVariable Integer customerId){
-        CustomerDTO customer = customerService.getCustomer(customerId);
+        CustomerDTO customer = customerService.getCustomerFakeRepo(customerId);
         System.out.println(customer);
         return customer;
     }
