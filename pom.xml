@@ -76,6 +76,12 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>io.micronaut.configuration</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
+            <version>1.0.0.RC2</version>
+        </dependency>
+
     </dependencies>
 
     <build>
