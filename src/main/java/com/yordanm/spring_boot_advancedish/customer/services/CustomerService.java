@@ -4,12 +4,13 @@ import com.yordanm.spring_boot_advancedish.customer.exceptions.CustomerNotFoundE
 import com.yordanm.spring_boot_advancedish.customer.models.CustomerDTO;
 import com.yordanm.spring_boot_advancedish.customer.repositories.CustomerRepo;
 import com.yordanm.spring_boot_advancedish.customer.repositories.CustomerRepository;
-import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Service
 //@RequiredArgsConstructor
 public record CustomerService(CustomerRepo customerRepo,
@@ -29,8 +30,13 @@ public record CustomerService(CustomerRepo customerRepo,
                 .map(CustomerDTO::map)
                 .findFirst();
         return responseCustomer.orElseThrow(
-                () -> new CustomerNotFoundException(
-                        String.format("Customer with id %d not found.", customerId)));
+                () -> {
+                    final CustomerNotFoundException customerNotFoundException = new CustomerNotFoundException(
+                            String.format("Customer with id %d not found.", customerId));
+                    log.info("The Customer with id: {} throw CustomerNotFoundException.", customerId);
+                    return customerNotFoundException;
+                }
+        );
     }
 
 
@@ -38,9 +44,12 @@ public record CustomerService(CustomerRepo customerRepo,
         return customerRepository.findById(customerId)
                 .map(CustomerDTO::map)
                 .orElseThrow(
-                        () -> new CustomerNotFoundException(
-                                String.format("Customer with id %d not found.", customerId)
-                        )
+                        () -> {
+                            final CustomerNotFoundException customerNotFoundException = new CustomerNotFoundException(
+                                    String.format("Customer with id %d not found.", customerId));
+                            log.warn("The Customer with id: {} throw CustomerNotFoundException.", customerId);
+                            return customerNotFoundException;
+                        }
                 );
     }
 
