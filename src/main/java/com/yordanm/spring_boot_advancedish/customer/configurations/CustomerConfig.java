@@ -2,7 +2,6 @@ package com.yordanm.spring_boot_advancedish.customer.configurations;
 
 import com.yordanm.spring_boot_advancedish.customer.repositories.CustomerFakeRepo;
 import com.yordanm.spring_boot_advancedish.customer.repositories.CustomerRepo;
-import com.yordanm.spring_boot_advancedish.customer.repositories.CustomerRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
